@@ -2,10 +2,15 @@
 " meises .vimrc "
 """""""""""""""""
 
-" enable loading plugin files
-
+" basics
+"""""""""
 syntax on
 filetype on
+
+" allow saving of files as sudo when you forgot to start vim using sudo
+if executable('sudo') && executable('tee')
+  command! W execute 'w !sudo tee % > /dev/null' | setlocal nomodified
+endif
 
 " default encoding
 set termencoding=utf-8
@@ -82,9 +87,4 @@ au BufNewFile,BufRead *.mustache setf mustache
 " Backups
 """"""""""
 set nobackup  " do not keep backups after close
-set nowritebackup   " do not keep a backup while working
 set noswapfile  " don't keep swp files either
-set backupdir=$HOME/.vim/backup   " store backups under ~/.vim/backup
-set backupcopy=yes  " keep attributes of original file
-set backupskip=/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*
-set directory=~/.vim/swap,~/tmp,. " keep swp files under ~/.vim/swap
