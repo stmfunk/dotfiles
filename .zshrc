@@ -88,6 +88,7 @@ esac
 
 # Aliases
 alias s='sudo'
+alias ry='ruby'
 alias ls='ls --color=auto'
 #alias grep='grep'
 alias l='ls -lh'
@@ -172,6 +173,8 @@ fi
 
 
 export EDITOR=vim
-export PATH=$PATH:/home/dm/CodeSourcery/Sourcery_G++_Lite/bin
+export LESS=-iMqFWR
+export PAGER=/usr/bin/less
 
+export PATH=$PATH:/home/dm/CodeSourcery/Sourcery_G++_Lite/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
