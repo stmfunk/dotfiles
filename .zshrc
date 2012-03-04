@@ -173,8 +173,6 @@ fi
 
 
 export EDITOR=vim
-export LESS=-iMqFWR
-export PAGER=/usr/bin/less
 
 export PATH=$PATH:/home/dm/CodeSourcery/Sourcery_G++_Lite/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
