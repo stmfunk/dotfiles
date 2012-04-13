@@ -130,7 +130,7 @@ alias ...........="cd ../../../../../../../../../../"
 alias privat="encfs ~/Dropbox/privat/ /mnt/privat/"
 alias aurisp-knock="knock gw.aurisp.de 2602:tcp 8201:tcp 4102:tcp"
 alias magrathea-knock="knock gw.magrathea.3st.be 2325:tcp"
-alias freifunk-paul-knock="knock paul.kbu.freifunk.net 4568:tcp 1287:tcp 6482:udp"
+alias freifunk-berlin-knock="telnet paul.kbu.freifunk.net 2326; telnet felicitas.kbu.freifunk.net 2326"
 alias status="git status"
 alias co="git commit -a"
 alias commit="co"
@@ -174,6 +174,11 @@ fi
 
 
 export EDITOR=vim
-
 export PATH=$PATH:/home/dm/CodeSourcery/Sourcery_G++_Lite/bin
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+
+# rbenv usage
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# rvm usage
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
