@@ -2,6 +2,8 @@
 " meises .vimrc "
 """""""""""""""""
 
+call pathogen#runtime_prepend_subdirectories(expand('~/.vim/bundles'))
+call pathogen#helptags()
 " basics
 """""""""
 syntax on
@@ -28,6 +30,7 @@ set ruler
 set incsearch
 set ignorecase
 set smartcase
+set hlsearch
 " shut the fuck up
 set visualbell 
 set noerrorbells
@@ -39,6 +42,7 @@ set showmatch
 " create no *~ backup files
 set nobackup
 
+
 " color
 """"""""
 if has("gui_running") " GUI color and font settings
@@ -49,20 +53,14 @@ if has("gui_running") " GUI color and font settings
   colors moria
   highlight CursorLine guibg=#003853 ctermbg=24 gui=none cterm=none
 else
+  set background=dark
+  set cursorline "underline the current line in the file
+"  set cursorcolumn "highlight the current column. Visible in GUI mode only.
 endif
-
+  
 " plugins
 """"""""""
-filetype plugin on
-" pathogen.vim
-call pathogen#infect()
-
-" latex settings
-if has('gui_running')
-    set grepprg=grep\ -nH\ $*
-    filetype indent on
-    let g:tex_flavor='latex'
-endif
+filetype plugin indent on   
 
 " file types
 """""""""""""
@@ -88,3 +86,36 @@ au BufNewFile,BufRead *.mustache setf mustache
 """"""""""
 set nobackup  " do not keep backups after close
 set noswapfile  " don't keep swp files either
+
+" Use a bar-shaped cursor for insert mode, even through tmux.
+if exists('$TMUX')
+
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+colorscheme desert 
+"colorscheme moria
+"colorscheme vividchalk
+
+     set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+     " | | | | | | | | | | |
+     " | | | | | | | | | | + current
+     " | | | | | | | | | | column
+     " | | | | | | | | | +-- current line
+     " | | | | | | | | +-- current % into file
+     " | | | | | | | +-- current syntax in
+     " | | | | | | | square brackets
+     " | | | | | | +-- current fileformat
+     " | | | | | +-- number of lines
+     " | | | | +-- preview flag in square brackets
+     " | | | +-- help flag in square brackets
+     " | | +-- readonly flag in square brackets
+     " | +-- rodified flag in square brackets
+     " +-- full path to file in the buffer
+ " }
+  
+highlight CursorLine  term=underline  guibg=#000000  cterm=underline
