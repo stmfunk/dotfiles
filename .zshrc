@@ -2,6 +2,8 @@
 # meises .zshrc #
 #################
 
+source .portknocking
+
 HOSTNAME=`hostname -f`
 
 zstyle ':completion:*' completer _complete
@@ -128,9 +130,6 @@ alias ..........="cd ../../../../../../../../../"
 alias ...........="cd ../../../../../../../../../../"
 
 alias privat="encfs ~/Dropbox/privat/ /mnt/privat/"
-alias aurisp-knock="knock gw.aurisp.de 2602:tcp 8201:tcp 4102:tcp"
-alias magrathea-knock="knock gw.magrathea.3st.be 2325:tcp"
-alias freifunk-berlin-knock="telnet paul.kbu.freifunk.net 2326; telnet felicitas.kbu.freifunk.net 2326"
 alias status="git status"
 alias co="git commit -a"
 alias commit="co"
