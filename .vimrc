@@ -75,7 +75,7 @@ au BufRead,BufNewFile *.sql set ft=pgsql
 au BufRead,BufNewFile *.rl set ft=ragel
 au BufRead,BufNewFile *.svg set ft=svg
 au BufRead,BufNewFile *.haml set ft=haml
-au BufRead,BufNewFile *.md set ft=mkd tw=80 ts=2 sw=2 expandtab
+au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set ft=mkd tw=80 ts=2 sw=2 expandtab
 au BufRead,BufNewFile *.markdown set ft=mkd tw=80 ts=2 sw=2 expandtab
 au BufRead,BufNewFile *.ronn set ft=mkd tw=80 ts=2 sw=2 expandtab
 " Set up puppet manifest and spec options
