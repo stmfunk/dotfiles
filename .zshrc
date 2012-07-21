@@ -2,7 +2,7 @@
 # meises .zshrc #
 #################
 
-source .portknocking
+source ~/.portknocking
 
 HOSTNAME=`hostname -f`
 
@@ -102,6 +102,7 @@ alias sv='sudo service'
 alias rh='rehash'
 alias g='gem'
 alias meld='env GTK2_RC_FILES=/usr/share/themes/Human/gtk-2.0/gtkrc meld'
+alias tina='tmuxinator'
 
 alias vipw='sudo vipw'
 alias vigr='sudo vigr'
@@ -130,6 +131,7 @@ alias ..........="cd ../../../../../../../../../"
 alias ...........="cd ../../../../../../../../../../"
 
 alias privat="encfs ~/Dropbox/privat/ /mnt/privat/"
+alias freifunk-dropbox="encfs ~/Dropbox/ff/ /mnt/freifunk/"
 alias status="git status"
 alias co="git commit -a"
 alias commit="co"
@@ -176,8 +178,11 @@ export EDITOR=vim
 export PATH=$PATH:/home/dm/CodeSourcery/Sourcery_G++_Lite/bin
 
 # rbenv usage
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
 
 # rvm usage
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+
+# pythonbrew
+#[[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc
