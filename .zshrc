@@ -29,7 +29,7 @@ compinit
 # End of lines added by compinstall
 
 # History configuration
-HISTFILE=~/zshhist
+HISTFILE=~/.zsh/zshhist
 HISTSIZE=2000
 SAVEHIST=2000
 
@@ -57,10 +57,10 @@ FG_NO_COLOR="%{$terminfo[sgr0]%}"
 
 # If connected via ssh, display prompt in different color
 if test -n "$SSH_CONNECTION"; then
-  export PROMPT="$BG_RED${FG_LIGHT_WHITE}%n@$HOSTNAME:%~\$${FG_NO_COLOR} "
+  export PROMPT="$BG_RED${FG_LIGHT_WHITE}%n@%m:%~\$${FG_NO_COLOR} "
   export RPROMPT="$BG_RED${FG_LIGHT_WHITE}20%D %*${FG_NO_COLOR}"
 else
-  export PROMPT="${FG_LIGHT_YELLOW}%n@%m:%~\$${FG_NO_COLOR} "
+  export PROMPT="${FG_LIGHT_GREEN}%n${FG_LIGHT_MAGENTA}@${FG_LIGHT_GREEN}%m:${FG_LIGHT_MAGENTA}%~${FG_LIGHT_YELLOW}\$${FG_NO_COLOR} "
   export RPROMPT='20%D %*'
 fi
 
@@ -141,6 +141,7 @@ alias r="rscreen"
 alias update="sudo aptitude update && sudo aptitude upgrade"
 alias irssi='SCREEN_CONF=irssi screen -S irssi -D -R irssi'
 alias ssync="rsync -a -e 'ssh' --rsync-path='sudo rsync' "
+alias tina="tmuxinator "
 
 
 # Glob aliases
@@ -175,7 +176,7 @@ fi
 
 
 export EDITOR=vim
-export PATH=$PATH:/home/dm/CodeSourcery/Sourcery_G++_Lite/bin
+#export PATH=$PATH:/home/dm/CodeSourcery/Sourcery_G++_Lite/bin
 
 # rbenv usage
 #export PATH="$HOME/.rbenv/bin:$PATH"
