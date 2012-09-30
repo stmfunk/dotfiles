@@ -175,8 +175,11 @@ if [[ $PWD == '.' ]]; then
 fi
 
 
+# editor
 export EDITOR=vim
-#export PATH=$PATH:/home/dm/CodeSourcery/Sourcery_G++_Lite/bin
+# pager
+export PAGER="zless"
+export LESS=SRMwi
 
 # rbenv usage
 #export PATH="$HOME/.rbenv/bin:$PATH"
