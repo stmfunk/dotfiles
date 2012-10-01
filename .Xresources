@@ -1,0 +1,19 @@
+! xrdb -load .Xresources
+!
+! General colors
+*background: #000000
+*foreground: #ffffff
+*cursorColor: orange
+
+! UXTerm
+UXTerm*bellIsUrgent: true
+UXTerm.vt100.renderFont: true
+UXTerm.vt100.font: -xos4-terminus-medium-r-normal-*-16-160-72-72-c-80-iso8859-15
+UXTerm.vt100.boldFont: -xos4-terminus-bold-r-normal-*-16-160-72-72-c-80-iso8859-15
+UXTerm.vt100.utf8Fonts.font: -xos4-terminus-medium-r-normal-*-16-160-72-72-c-80-iso10646-1
+UXTerm.vt100.utf8Fonts.boldFont: -xos4-terminus-bold-r-normal-*-16-160-72-72-c-80-iso10646-1
+UXTerm*scrollstyle: plain
+UXTerm*locale: true
+UXTerm*scrollBar: false
+UXTerm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48,35:48
+UXTerm*termName: xterm-256color
