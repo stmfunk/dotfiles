@@ -167,7 +167,7 @@ exec --no-startup-id nitrogen --restore
 # dropbox
 exec --no-startup-id dropbox start
 # lock screen if idle
-exec --no-startup-id xautolock -time 3600  -locker i3lock
+exec --no-startup-id xautolock -time 3600  -locker 'i3lock -c 000000'
 # feed reader
 exec --no-startup-id liferea
 
