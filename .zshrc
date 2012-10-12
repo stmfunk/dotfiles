@@ -142,6 +142,7 @@ alias update="sudo aptitude update && sudo aptitude upgrade"
 alias irssi='SCREEN_CONF=irssi screen -S irssi -D -R irssi'
 alias ssync="rsync -a -e 'ssh' --rsync-path='sudo rsync' "
 alias tina="tmuxinator "
+alias fritz="mplayer http://rbb.ic.llnwd.net/stream/rbb_fritz_mp3_m_a"
 
 
 # Glob aliases
@@ -160,9 +161,10 @@ shortcut_dirs=(
  loc /usr/local
  init /etc/init.d
  pro ~/projects
- gem /var/lib/gems/1.8/gems
  desk ~/Desktop
  git ~/git
+ mus ~/music
+ docu ~/documents
 )
 
 function go() {
@@ -182,11 +184,14 @@ export PAGER="zless"
 export LESS=SRMwi
 
 # rbenv usage
-#export PATH="$HOME/.rbenv/bin:$PATH"
-#eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 # rvm usage
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 
 # pythonbrew
 #[[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc
+
+# node version manager
+# source ~/.nvm/nvm.sh
