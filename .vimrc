@@ -2,8 +2,6 @@
 " meises .vimrc "
 """""""""""""""""
 
-"call pathogen#runtime_prepend_subdirectories(expand('~/.vim/bundles'))
-"call pathogen#helptags()
 " basics
 """""""""
 syntax on
@@ -58,7 +56,6 @@ if has("gui_running") " GUI color and font settings
 else
   set background=dark
   set cursorline "underline the current line in the file
-"  set cursorcolumn "highlight the current column. Visible in GUI mode only.
 endif
 
 " plugins
@@ -105,8 +102,6 @@ else
 endif
 
 colorscheme desert
-"colorscheme moria
-"colorscheme vividchalk
 
      set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
      " | | | | | | | | | | |
@@ -125,7 +120,6 @@ colorscheme desert
      " +-- full path to file in the buffer
  " }
 
-"highlight CursorLine  term=underline  guibg=#000000  cterm=underline
 highlight comment ctermfg=cyan
 highlight LiteralTabs ctermbg=darkgreen guibg=darkgreen
 match LiteralTabs /\s\  /

@@ -2,7 +2,7 @@
 # meises .zshrc #
 #################
 
-source ~/.portknocking
+#source ~/.portknocking
 
 HOSTNAME=`hostname -f`
 
@@ -26,8 +26,6 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 autoload -Uz compinit
 compinit
 
-# End of lines added by compinstall
-
 # History configuration
 HISTFILE=~/.zsh/zshhist
 HISTSIZE=2000
@@ -47,7 +45,7 @@ if [[ "$terminfo[colors]" -ge 8 ]]; then
 fi
 
 # Register terminal color variables for easy use
-for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
+for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE BLACK; do
   eval FG_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
   eval FG_LIGHT_$color='%{$fg[${(L)color}]%}'
   eval BG_$color='%{$bg[${(L)color}]%}'
@@ -57,7 +55,7 @@ FG_NO_COLOR="%{$terminfo[sgr0]%}"
 
 # If connected via ssh, display prompt in different color
 if test -n "$SSH_CONNECTION"; then
-  export PROMPT="$BG_RED${FG_LIGHT_WHITE}%n@%m:%~\$${FG_NO_COLOR} "
+  export PROMPT="$BG_RED${FG_LIGHT_WHITE}%n@%m$BG_BLACK:${FG_LIGHT_MAGENTA}%~${FG_LIGHT_GREEN}\$${FG_NO_COLOR} "
   export RPROMPT="$BG_RED${FG_LIGHT_WHITE}20%D %*${FG_NO_COLOR}"
 else
   export PROMPT="${FG_LIGHT_GREEN}%n${FG_LIGHT_MAGENTA}@${FG_LIGHT_GREEN}%m:${FG_LIGHT_MAGENTA}%~${FG_LIGHT_YELLOW}\$${FG_NO_COLOR} "
@@ -85,14 +83,13 @@ case $TERM in (xterm*)
  bindkey '\eOF' end-of-line
  bindkey '\e[3~' delete-char
  bindkey '\e[2~' overwrite-mode
-  bindkey '\e[3;3~' delete-word
+ bindkey '\e[3;3~' delete-word
 esac
 
 # Aliases
 alias s='sudo'
 alias ry='ruby'
 alias ls='ls --color=auto'
-#alias grep='grep'
 alias l='ls -lh'
 alias ll='ls -lah'
 alias c='clear'
@@ -143,7 +140,7 @@ alias irssi='SCREEN_CONF=irssi screen -S irssi -D -R irssi'
 alias ssync="rsync -a -e 'ssh' --rsync-path='sudo rsync' "
 alias tina="tmuxinator "
 alias fritz="mplayer http://rbb.ic.llnwd.net/stream/rbb_fritz_mp3_m_a"
-
+alias irb="pry"
 
 # Glob aliases
 alias -g G='| grep'
@@ -152,7 +149,7 @@ alias -g H='--help'
 alias -g V='--version'
 
 # Register special directories
-#hash -d doc=/usr/share/doc  # Usage: cd ~doc
+hash -d doc=/usr/share/doc  # Usage: cd ~doc
 
 # go-command to jump to directories via shortcuts
 typeset -A shortcut_dirs
@@ -176,22 +173,24 @@ if [[ $PWD == '.' ]]; then
   cd
 fi
 
-
 # editor
 export EDITOR=vim
 # pager
 export PAGER="zless"
 export LESS=SRMwi
+# git
+export GIT_AUTHOR_NAME="Daniel Meißner"
+export GIT_AUTHOR_EMAIL="daniel@3st.be"
 
-# rbenv usage
+# rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-# rvm usage
+# rvm
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 
 # pythonbrew
 #[[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc
 
 # node version manager
-# source ~/.nvm/nvm.sh
+#source ~/.nvm/nvm.sh
