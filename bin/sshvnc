@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "$2" == "" ]; then
+  remote_address="localhost:5900"
+else
+  remote_address="$2"
+fi
+
+ssh -o 'ControlMaster no' -f -L 5901:$remote_address $1 sleep 10
+
+#vncviewer localhost:5901 -compresslevel 9 -quality 0
+vinagre localhost:5901

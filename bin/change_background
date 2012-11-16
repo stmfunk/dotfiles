@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+#
+# m h  dom mon dow   command
+# */15  * * * *      DISPLAY=:0 /usr/local/bin/change_background ~/bilder/
+
+require 'pathname'
+
+if ARGV.size == 0 || ARGV.size > 1
+  puts "Usage: #{$0} /path/to/directory"
+
+  exit 1
+end
+
+IMAGE_DIR = Pathname.new(ARGV[0])
+
+if %x{which feh}.empty?
+  puts 'Install feh.'
+
+  exit 2
+else
+  %x{feh --no-fehbg --bg-center '#{IMAGE_DIR + IMAGE_DIR.entries.sample}'}
+
+  exit 0
+end

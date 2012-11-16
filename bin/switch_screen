@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+require 'pathname'
+
+TEMP_FILE = Pathname('/tmp/switch_screen_mod')
+LOG_FILE  = Pathname('/tmp/switch_screen_mod.log')
+
+mod  = [ # Monitor only
+         'xrandr --output DP3 --off --output DP2 --off --output DP1 --off --output HDMI2 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI1 --off --output LVDS1 --off --output VGA1 --off',
+         # Notebook only
+         'xrandr --output DP3 --off --output DP2 --off --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output LVDS1 --mode 1280x800 --pos 0x0 --rotate normal --output VGA1 --off',
+         # Beamer Mode
+         'xrandr --output DP3 --off --output DP2 --off --output DP1 --off --output HDMI2 --mode 1024x768 --pos 0x0 --rotate normal --output HDMI1 --off --output LVDS1 --mode 1024x768 --pos 0x0 --rotate normal --output VGA1' ]
+
+@mod_number = Integer
+
+if TEMP_FILE.exist?
+  last_mod_number = File.read(TEMP_FILE).chomp.to_i
+  last_mod_number > 1 ? @mod_number = 0 : @mod_number = last_mod_number + 1
+else
+  @mod_number = rand(0..2)
+end
+
+File.open(TEMP_FILE, 'w') { |file| file.write(@mod_number) }
+
+result = %x{ #{mod[@mod_number]}  }
+
+File.open(LOG_FILE, 'w') do |file|
+  file << "#{Time.now} - #{p $?}"
+end
+
+exit 0
