@@ -81,11 +81,11 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
+bindsym $mod+1 workspace 1: sh
+bindsym $mod+2 workspace 2: www
+bindsym $mod+3 workspace 3: mail
+bindsym $mod+4 workspace 4: im
+bindsym $mod+5 workspace 5: blä
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
@@ -93,11 +93,11 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+exclam move container to workspace 1
-bindsym $mod+Shift+quotedbl move container to workspace 2
-bindsym $mod+Shift+section move container to workspace 3
-bindsym $mod+Shift+dollar move container to workspace 4
-bindsym $mod+Shift+percent move container to workspace 5
+bindsym $mod+Shift+exclam move container to workspace 1: sh
+bindsym $mod+Shift+quotedbl move container to workspace 2: www
+bindsym $mod+Shift+section move container to workspace 3: mail
+bindsym $mod+Shift+dollar move container to workspace 4: im
+bindsym $mod+Shift+percent move container to workspace 5: blä
 bindsym $mod+Shift+ampersand move container to workspace 6
 bindsym $mod+Shift+slash move container to workspace 7
 bindsym $mod+Shift+parenleft move container to workspace 8
@@ -110,6 +110,9 @@ bindsym $mod+Shift+C reload
 bindsym $mod+Shift+R restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+E exit
+
+# capture screen
+bindsym $mod+Shift+S exec /usr/local/bin/screenshot
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -149,31 +152,42 @@ bar {
 
     colors {
         background #0F0F0F
-        statusline #ffac4d
+        statusline #FF9900
 
-        focused_workspace #FF9900 #666666
-        active_workspace #FF9900 #0F0F0F
-        inactive_workspace #FFCC33 #1E1E1E
-        urgent_workspace #FFCC33 #900000
+        # class border backgr. text
+        #focused_workspace #FF9900 #666666
+        focused_workspace #0F0F0F #0F0F0F #FF9900
+        inactive_workspace #0F0F0F #0F0F0F #696969
+        active_workspace #333333 #FF9900 #0F0F0F
+        urgent_workspace #333333 #FFCC33 #900000
     }
 }
 
-# nagsatmon
+# client colors
+# class border backgr. text
+client.focused #333333 #010101 #FF9900
+client.focused_inactive #333333 #010101 #333333
+client.unfocused #333333 #010101 #333333
+client.urgent #333333 #900000 #ffac4d
+
+# throw programs on defined workspace
+# xprop
+assign [class="Iceweasel"] → 2: www
+assign [class="Sylpheed"] → 3: mail
+assign [class="Pidgin"] → 4: im
+assign [class="Pavucontrol"] → 5: blä
+assign [class="Mumble"] → 5: blä
+assign [class="Clementine"] → 5: blä
+
+# nagstamon
 exec --no-startup-id nagstamon
 # network manager
 exec --no-startup-id wicd-client
-# wallpaper
-exec --no-startup-id nitrogen --restore
 # dropbox
 exec --no-startup-id dropbox start
 # lock screen if idle
 exec --no-startup-id xautolock -time 3600  -locker 'i3lock -c 000000'
 # feed reader
 exec --no-startup-id liferea
-
-# colors
-# class border backgr. text
-client.focused #525252 #1E1E1E #FF9900
-client.focused_inactive #333333 #0F0F0F #FFCC33
-client.unfocused #333333 #010101 #FFCC33
-client.urgent #856E23 #900000 #ffac4d
+# screen blanking
+exec ----no-startup-id /bin/bash -c 'xset s off; xset -dpms; xset s noblank'
