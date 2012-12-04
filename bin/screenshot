@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+require 'json'
+require 'pathname'
+
+WORKSPACES = JSON.load(`i3-msg -t get_workspaces`)
+STORAGE_LOCATION = Pathname(ENV['HOME'] + '/screenshots')
+
+WORKSPACES.each do |workspace|
+  next unless workspace['visible']
+
+  image_path = STORAGE_LOCATION + "#{workspace['num']}.#{rand(0-9999)}.png"
+
+  # switch to current active workspace
+  %x{ i3-msg workspace #{workspace['name']} }
+
+  sleep 1
+  # take a photo
+  %x{ import -window root #{image_path.to_s} }
+end
