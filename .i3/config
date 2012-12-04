@@ -166,8 +166,8 @@ bar {
 # client colors
 # class border backgr. text
 client.focused #333333 #010101 #FF9900
-client.focused_inactive #333333 #010101 #333333
-client.unfocused #333333 #010101 #333333
+client.focused_inactive #333333 #010101 #696969
+client.unfocused #333333 #010101 #696969
 client.urgent #333333 #900000 #ffac4d
 
 # throw programs on defined workspace
