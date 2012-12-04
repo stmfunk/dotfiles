@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+require 'pathname'
+
+USER     = ENV['USER']
+HOME     = Pathname(ENV['HOME'])
+HOSTNAME = `hostname`.chomp
+
+BACKUP_BASE_DIR  = Pathname('/mnt/encfs/backup/')
+BACKUP_HOME_PATH = BACKUP_BASE_DIR + "#{HOSTNAME}#{HOME}"
+
+def rsync_path
+  rsync_path = `which rsync`.chomp
+
+  if rsync_path.empty?
+    exit -1
+  end
+
+  rsync_path
+end
+
+def create_backup
+  if BACKUP_HOME_PATH.exist?
+    %x{ #{rsync_path} -a --delete #{HOME}/ #{BACKUP_HOME_PATH}/ }
+  end
+end
+
+create_backup
