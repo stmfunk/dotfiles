@@ -2,8 +2,6 @@
 # meises .zshrc #
 #################
 
-#source ~/.portknocking
-
 HOSTNAME=`hostname -f`
 
 zstyle ':completion:*' completer _complete
@@ -182,15 +180,32 @@ export LESS=SRMwi
 export GIT_AUTHOR_NAME="Daniel Meißner"
 export GIT_AUTHOR_EMAIL="daniel@3st.be"
 
+# include optinal files
 # rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# rvm
-#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-
-# pythonbrew
-#[[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc
+if test -d $HOME/.rbenv; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
 
 # node version manager
-#source ~/.nvm/nvm.sh
+if test -e $HOME/.nvm/nvm.sh; then
+  source $HOME/.nvm/nvm.sh
+fi
+
+# pythonbrew
+if test -e $HOME/.pythonbrew/etc/bashrc; then
+  [[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc
+fi
+
+# rvm
+if test -e $HOME/.rvm/scripts/rvm; then
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+fi
+
+if test -e $HOME/.portknocking; then
+  source $HOME/.portknocking
+fi
+
+if test -e $HOME/.xinitrc; then
+  source $HOME/.xinitrc
+fi
