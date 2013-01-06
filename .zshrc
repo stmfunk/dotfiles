@@ -61,7 +61,9 @@ else
 fi
 
 # Set colors for coreutils
-eval "`dircolors -b`"
+if [ `uname` = 'Linux' ]; then
+  eval "`dircolors -b`"
+fi
 
 # Colors in manpages
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -87,7 +89,13 @@ esac
 # Aliases
 alias s='sudo'
 alias ry='ruby'
-alias ls='ls --color=auto'
+
+if [ `uname` = 'Linux' ]; then
+  alias ls='ls --color=auto'
+else
+  alias ls='ls -G'
+fi
+
 alias l='ls -lh'
 alias ll='ls -lah'
 alias c='clear'
