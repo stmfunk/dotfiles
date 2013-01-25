@@ -9,14 +9,8 @@ fi
 PWD=`pwd`
 SCRIPT_DIR="${PWD}/${DIR_NAME}"
 
-DOTFILES=`ls -1a \
-              -I $0 \
-              -I bin \
-              -I README.md \
-              -I . -I .. \
-              -I .git -I .gitignore \
-              -I install.rb -I install.sh \
-              $SCRIPT_DIR`
+DOTFILES=`ls -1a $SCRIPT_DIR | sed -e \
+          '/\.$/ d; /bin/ d; /README\.md/ d; /^\.giti/ d; /^\.git$/ d; /^install/ d'`
 
 link_files() {
   # if dotfiles not exists, link them to repositorie
