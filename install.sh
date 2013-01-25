@@ -16,7 +16,7 @@ link_files() {
   # if dotfiles not exists, link them to repositorie
   for FILE in $DOTFILES; do
     if [ ! -e $HOME/$FILE ]; then
-      ln -s $SCRIPT/$FILE $HOME/$FILE
+      ln -s $SCRIPT_DIR/$FILE $HOME/$FILE
     fi
 
     echo `ls -lgo $HOME/$FILE`
