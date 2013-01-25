@@ -196,6 +196,10 @@ export LESS=SRMwi
 export GIT_AUTHOR_NAME="Daniel Meißner"
 export GIT_AUTHOR_EMAIL="daniel@3st.be"
 
+if [ `command -v kvm` ] && [ `command -v virsh` ]; then
+  export VIRSH_DEFAULT_CONNECT_URI=qemu:///system
+fi
+
 # include optinal files
 # rbenv
 if test -d $HOME/.rbenv; then
