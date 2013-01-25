@@ -92,6 +92,10 @@ alias ry='ruby'
 
 if [ `uname` = 'Linux' ]; then
   alias ls='ls --color=auto'
+
+  if test -e $HOME/.xinitrc; then
+    source $HOME/.xinitrc
+  fi
 else
   alias ls='ls -G'
 fi
@@ -110,6 +114,10 @@ alias tina='tmuxinator'
 alias vipw='sudo vipw'
 alias vigr='sudo vigr'
 alias visudo='sudo visudo'
+
+if [ `command -v vim` ]; then
+  alias vi="vim"
+fi
 
 alias ..1="cd .."
 alias ..2="cd ../../"
@@ -214,6 +222,3 @@ if test -e $HOME/.portknocking; then
   source $HOME/.portknocking
 fi
 
-if test -e $HOME/.xinitrc; then
-  source $HOME/.xinitrc
-fi
