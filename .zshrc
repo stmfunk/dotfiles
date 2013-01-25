@@ -26,8 +26,8 @@ compinit
 
 # History configuration
 HISTFILE=~/.zsh/zshhist
-HISTSIZE=2000
-SAVEHIST=2000
+HISTSIZE=9000
+SAVEHIST=900000000
 
 # General options
 setopt autocd beep nomatch notify share_history extendedglob
