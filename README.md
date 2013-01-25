@@ -1,6 +1,12 @@
 Dotfiles
 ========
 
+Installation
+------------
+
+    $ git clone https://github.com/meise/dotfiles.git
+    $ dotfiles/install.sh install
+
 Credits
 -------
 
