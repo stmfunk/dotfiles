@@ -150,7 +150,6 @@ alias pull="git pull"
 alias push="git push"
 alias r="rscreen"
 alias update="sudo aptitude update && sudo aptitude upgrade"
-alias irssi='SCREEN_CONF=irssi screen -S irssi -D -R irssi'
 alias ssync="rsync -a -e 'ssh' --rsync-path='sudo rsync' "
 alias tina="tmuxinator "
 alias fritz="mplayer http://rbb.ic.llnwd.net/stream/rbb_fritz_mp3_m_a"
