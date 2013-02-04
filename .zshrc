@@ -119,6 +119,8 @@ if [ `command -v vim` ]; then
   alias vi="vim"
 fi
 
+alias m='mosh'
+
 alias ..1="cd .."
 alias ..2="cd ../../"
 alias ..3="cd ../../../"
