@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+
+require 'pathname'
+
+origin_config_dir = ENV['HOME'] + '/.config/Clementine/'
+origin_config_db  = origin_config_dir + 'clementine.db'
+origin_config     = origin_config_dir + 'Clementine.conf'
+
+origin = { db: Pathname(origin_config_db), config: Pathname(origin_config) }
+usb    = { db: Pathname(origin_config_db + '.usb'), config: Pathname(origin_config + '.usb') }
+local  = { db: Pathname(origin_config_db + '.local'), config: Pathname(origin_config + '.local') }
+
+if origin[:db].symlink? and origin[:config].symlink?
+  File.unlink(origin[:db])
+  File.unlink(origin[:config])
+else
+  exit 1
+end
+
+if Pathname('/mnt/encfs/musik/flac/').exist?
+  File.symlink(usb[:db], origin[:db])
+  File.symlink(usb[:config], origin[:config])
+elsif Pathname('/mnt/nfs/Musik/Flac').exist?
+  File.symlink(nfs[:db], origin[:db])
+  File.symlink(nfs[:config], origin[:config])
+else
+  File.symlink(local[:db], origin[:db])
+  File.symlink(local[:config], origin[:config])
+end
+
+system('clementine-client &')
+
+exit 0
