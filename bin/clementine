@@ -8,13 +8,12 @@ origin_config     = origin_config_dir + 'Clementine.conf'
 
 origin = { db: Pathname(origin_config_db), config: Pathname(origin_config) }
 usb    = { db: Pathname(origin_config_db + '.usb'), config: Pathname(origin_config + '.usb') }
+nfs    = { db: Pathname(origin_config_db + '.nfs'), config: Pathname(origin_config + '.nfs') }
 local  = { db: Pathname(origin_config_db + '.local'), config: Pathname(origin_config + '.local') }
 
 if origin[:db].symlink? and origin[:config].symlink?
   File.unlink(origin[:db])
   File.unlink(origin[:config])
-else
-  exit 1
 end
 
 if Pathname('/mnt/encfs/musik/flac/').exist?
