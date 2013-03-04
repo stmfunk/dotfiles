@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Running security updates on debian based systems managed with libvirt and
+# accessible via ssh.
+
+# Tmux, virsh and ssh are needed for this script.
+
+case "$1" in
+  "freifunk")
+    vms="freifunk-paula freifunk-www freifunk-backup freifunk-collectd freifunk-paul freifunk-felicitas freifunk-kif"
+    ;;
+  "froscon")
+    vms="froscon-frab froscon-fr0g froscon-management froscon-www froscon-streaming"
+    ;;
+
+  "fslab")
+    vms="fslab-nox fslab-heron fslab-lilith fslab-two fslab-jabber fslab-42"
+    ;;
+  *)
+    vms=`virsh list --name`
+    ;;
+esac
+
+if [ -z "$TMUX" ]; then
+  echo "Create tmux session before installing updates:"
+  echo "  tmux new"
+
+  exit 1
+else
+  echo Update VMs ${vms}.
+  echo
+
+  for vm in $vms; do
+    tmux new-window -n $vm "ssh $vm '\
+      sudo aptitude update && \
+      sudo aptitude safe-upgrade && \
+      echo && \
+      echo Updating done && \
+      sleep 60'"
+  done
+
+  echo "Check tmux tabs for interaction."
+fi
+
+exit 0
