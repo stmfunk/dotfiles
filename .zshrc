@@ -33,6 +33,9 @@ SAVEHIST=900000000
 setopt autocd beep nomatch notify share_history extendedglob
 unsetopt appendhistory
 
+# bash-style comment syntax
+setopt interactivecomments
+
 WORDCHARS='*?_-.[]~=&;!#$%^(){}'
 
 # Load color variables
