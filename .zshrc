@@ -81,12 +81,20 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 bindkey -e
 
 # Bind special keys for xterm
-case $TERM in (xterm*)
- bindkey '\eOH' beginning-of-line
- bindkey '\eOF' end-of-line
- bindkey '\e[3~' delete-char
- bindkey '\e[2~' overwrite-mode
- bindkey '\e[3;3~' delete-word
+
+
+case $TERM in
+  (xterm*)
+    bindkey '\eOH' beginning-of-line
+    bindkey '\eOF' end-of-line
+    bindkey '\e[3~' delete-char
+    bindkey '\e[2~' overwrite-mode
+    bindkey '\e[3;3~' delete-word
+    ;;
+
+  *)
+    bindkey "^[[3~" delete-char
+    ;;
 esac
 
 # Aliases
@@ -180,6 +188,8 @@ shortcut_dirs=(
  git ~/git
  mus ~/music
  docu ~/documents
+ kunden ~/Selbstständigkeit/Kunden/
+ kunde ~/Selbstständigkeit/Kunden/
 )
 
 function go() {
